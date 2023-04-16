@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { getCodeBlocks } from "../../services/codeblockService/codeblock.service";
+import { checkCodeBlock, getCodeBlocks } from "../../services/codeblockService/codeblock.service";
+import { ICodeBlockModel } from "../../models/CodeBlockModel";
 
 export const getAllCodeBlocks = async ( req: Request, res: Response ) => {
     try {
@@ -7,6 +8,17 @@ export const getAllCodeBlocks = async ( req: Request, res: Response ) => {
         return res
         .status(200)
         .json(codes)
+    } catch (e: any) {
+        throw e;
+    }
+}
+
+export const checkTheRightCode = async ( req: Request, res: Response ) => {
+    try {
+        const code: ICodeBlockModel | null = await checkCodeBlock(req.body)
+        return res
+        .status(200)
+        .json(code)
     } catch (e: any) {
         throw e;
     }
