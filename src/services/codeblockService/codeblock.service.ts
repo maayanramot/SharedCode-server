@@ -22,17 +22,3 @@ export const checkCodeBlock = async (codeToCheck: ICodeBlockModel) => {
         return null; 
     }
 }
-
-
-// export const checkCodeBlock = async (codeToCheck: ICodeBlockModel) => {
-//     const { _id, title, code, missingCode } = codeToCheck
-//     try {
-//         const rightCode = await CodeBlockModel.findOne( { code })
-//         if(!rightCode) {
-//            throw new Error('The wrong code / code missing')
-//         } 
-//         return rightCode
-//     } catch (e) {
-//         throw new Error('The wrong code / code missing')
-//     }
-// }
